@@ -4,7 +4,7 @@
 	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>si.feri</groupId>
-	<artifactId>sampleProject</artifactId>
+	<artifactId>sampleProjectCalculator</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	
@@ -18,7 +18,7 @@
 	</dependencies>
 	
 	<build>
-		<finalName>sampleProject</finalName>
+		<finalName>sampleProjectCalculator</finalName>
 		
 		<plugins>
 			<plugin>
