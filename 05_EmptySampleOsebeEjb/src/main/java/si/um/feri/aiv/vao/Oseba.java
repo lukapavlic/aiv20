@@ -1,4 +1,4 @@
-package si.um.feri.aiv;
+package si.um.feri.aiv.vao;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
