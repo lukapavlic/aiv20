@@ -6,8 +6,6 @@
 	
 	<ui:composition template="WEB-INF/template/template.xhtml">
 	
-		<ui:define name="title">Stran za pregled vseh oseb</ui:define>
-	
 		<ui:define name="content">
 			<f:view>
 				<h:form>
@@ -32,9 +30,17 @@
 							<f:facet name="header">
 								<h:outputText value="E-mail"/>
 							</f:facet>
-							<h:commandLink action="#{demo.izberiOsebo(o.email)}" value="#{o.email}"/>
+							
+							<!-- navadna povezava! -->
+							<h:link value="#{o.email}" outcome="podrobnosti">
+								<f:param name="email" value="#{o.email}" />
+							</h:link>
+
 						</h:column>
 					</h:dataTable>
+
+
+					<h:commandButton value="DEMO" actionListener="#{demo.nekaj}"></h:commandButton>
 
 				</h:form>
 			</f:view>

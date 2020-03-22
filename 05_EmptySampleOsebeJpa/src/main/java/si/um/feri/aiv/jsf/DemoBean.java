@@ -5,41 +5,54 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import si.um.feri.aiv.ejb.OsebeDao;
+import si.um.feri.aiv.ejb.Demo;
+import si.um.feri.aiv.ejb.Osebe;
 import si.um.feri.aiv.vao.Oseba;
 
 @Named("demo")
 @SessionScoped
 public class DemoBean implements Serializable {
 
-	private static final long serialVersionUID = -4576958665520233267L;
-
 	Logger log=LoggerFactory.getLogger(DemoBean.class);
+
+	@EJB
+	private Osebe ejb;
 	
 	@EJB
-	private OsebeDao dao;//=new OsebeDaoBean();
+	private Demo demoEjb;
 
 	private Oseba novaOseba=new Oseba();
 
 	private Oseba izbranaOseba=new Oseba();
-
-	public String izberiOsebo(String email) {
-		log.info("JSF BEAN: izberiOsebo");
+	
+	private String izbranEmail;
+	
+	public void nekaj() {
+		demoEjb.narediNekaj();
+	}
+	
+	public void setIzbranEmail(String email) {
+		log.info("JSF BEAN: setIzbranEmail");
+		izbranEmail=email;
 		try {
-			izbranaOseba=dao.najdi(email);
+			izbranaOseba=ejb.najdi(email);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "podrobnosti.xhtml";
+	}
+	
+	public String getIzbranEmail() {
+		return izbranEmail;
 	}
 
 	public void dodajOsebo() {
 		log.info("JSF BEAN: dodajOsebo");
 		try {
-			dao.shrani(novaOseba);
+			ejb.shrani(novaOseba);
 			novaOseba=new Oseba();
 		} catch (Exception e) {
 			e.printStackTrace();

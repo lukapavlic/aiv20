@@ -3,7 +3,14 @@ package si.um.feri.aiv.vao;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class Oseba {
 
 	public Oseba() {
@@ -14,8 +21,6 @@ public class Oseba {
 		this.email = email;
 		this.ime = ime;
 		this.priimek = priimek;
-		this.spol = "";
-		datumRojstva=new GregorianCalendar();
 		datumVpisa=new GregorianCalendar();
 	}
 	
@@ -23,25 +28,39 @@ public class Oseba {
 		this.email = email;
 		this.ime = ime;
 		this.priimek = priimek;
-		this.spol = "";
-		datumRojstva=new GregorianCalendar();
 		datumVpisa=new GregorianCalendar();
 	}
 
-	public static final String MOSKI="M";
-	public static final String ZENSKA="Z";
+	private int id;
 	
 	private String ime;
 
 	private String priimek;
 	
 	private String email;
-	
-	private String spol;
-	
-	private Calendar datumRojstva;
 
 	private Calendar datumVpisa;
+	
+	private Posta bivalisce;
+
+	@ManyToOne(fetch=FetchType.EAGER)
+	public Posta getBivalisce() {
+		return bivalisce;
+	}
+
+	public void setBivalisce(Posta bivalisce) {
+		this.bivalisce = bivalisce;
+	}
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getIme() {
 		return ime;
@@ -75,26 +94,11 @@ public class Oseba {
 		this.datumVpisa = datumVpisa;
 	}
 	
-	public String getSpol() {
-		return spol;
-	}
-
-	public void setSpol(String spol) {
-		this.spol = spol;
-	}
-
-	public Calendar getDatumRojstva() {
-		return datumRojstva;
-	}
-
-	public void setDatumRojstva(Calendar datumRojstva) {
-		this.datumRojstva = datumRojstva;
-	}
-
 	private static SimpleDateFormat sdf=new SimpleDateFormat("dd. MM. yyyy HH:mm:ss");
+
 	@Override
 	public String toString() {
-		return ime + " " + priimek + ","+spol+" ("+email+"); datum rojstva: "+sdf.format(datumRojstva.getTime())+"; vpis: "+sdf.format(datumVpisa.getTime());
+		return id+": "+ime + " " + priimek + " ("+email+"); vpis: "+sdf.format(datumVpisa.getTime());
 	}
 	
 }

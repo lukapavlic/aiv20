@@ -8,47 +8,34 @@
 	
 		<ui:define name="content">
 			<f:view>
-				<h:form>
 
-					<table border="0">
-						<tr>
-							<td>Ime:</td>
-							<td><h:outputText value="#{demo.izbranaOseba.ime}"/></td>
-						</tr>
-						<tr>
-							<td>Priimek:</td>
-							<td><h:outputText value="#{demo.izbranaOseba.priimek}"/></td>
-						</tr>
-						<tr>
-							<td>E-mail:</td>
-							<td><h:outputText value="#{demo.izbranaOseba.email}"/></td>
-						</tr>
-						<tr>
-							<td>Spol:</td>
-							<td>
-								<h:outputText value="MOsKI" rendered="#{demo.izbranaOseba.spol eq 'M'}"/>
-								<h:outputText value="ZENSKA" rendered="#{demo.izbranaOseba.spol eq 'Z'}"/>
-							</td>
-						</tr>
-						<tr>
-							<td>Datum rojstva:</td>
-							<td>
-								<h:outputText value="#{demo.izbranaOseba.datumRojstva.time}">
-									<f:convertDateTime pattern="dd. MM. yyyy" />
-								</h:outputText>
-							</td>
-						</tr>
-						<tr>
-							<td>Vnos:</td>
-							<td>
-								<h:outputText value="#{demo.izbranaOseba.datumVpisa.time}">
-									<f:convertDateTime pattern="dd. MM. yyyy HH:mm:ss" />
-								</h:outputText>
-							</td>
-						</tr>
-					</table>
+				<f:metadata>
+					<f:viewParam name="email" value="#{demo.izbranEmail}" />
+				</f:metadata>
+
+				<table border="0">
+					<tr>
+						<td>Ime:</td>
+						<td><h:outputText value="#{demo.izbranaOseba.ime}"/></td>
+					</tr>
+					<tr>
+						<td>Priimek:</td>
+						<td><h:outputText value="#{demo.izbranaOseba.priimek}"/></td>
+					</tr>
+					<tr>
+						<td>E-mail:</td>
+						<td><h:outputText value="#{demo.izbranaOseba.email}"/></td>
+					</tr>
+					<tr>
+						<td>Vnos:</td>
+						<td>
+							<h:outputText value="#{demo.izbranaOseba.datumVpisa.time}">
+								<f:convertDateTime pattern="dd. MM. yyyy HH:mm:ss" />
+							</h:outputText>
+						</td>
+					</tr>
+				</table>
 					 
-				</h:form>
 			</f:view>
 		</ui:define>
 		
