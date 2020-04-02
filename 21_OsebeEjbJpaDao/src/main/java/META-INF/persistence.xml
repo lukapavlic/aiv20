@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="030_jpa">
 	
-		<jta-data-source>java:jboss/datasources/database</jta-data-source>
+		<jta-data-source>java:jboss/datasources/knjiznica</jta-data-source>
 		
 		<!-- exclude-unlisted-classes>false</exclude-unlisted-classes -->
 		
